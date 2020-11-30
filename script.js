@@ -10,7 +10,6 @@ let items;
 
 loadItems();
 
-
 //call event listener
 eventListeners();
 
@@ -25,7 +24,6 @@ function eventListeners() {
     //deleter all times
 
     btnDeleteAll.addEventListener('click', deleteAllItems);
-
 }
 
 //add new Item
@@ -37,30 +35,12 @@ function addNewItem(e) {
         createItem(input.value);
         setItemtoLS(input.value);
         input.value = '';
-
     }
-
-    //create item
-   
-
-    //save to lS
-
-    
-
-    //clear input
-    
-
-
-
-
-
     e.preventDefault();
 
 }
 // delete Item
 function deleteItem(e) {
-
-
 
     if (e.target.className === 'fas fa-times') {
 
@@ -69,17 +49,9 @@ function deleteItem(e) {
             e.target.parentElement.parentElement.remove();
 
             // delete item from LS
-
             deleteItemFromLS(e.target.parentElement.parentElement.textContent);
-
-
-
         }
     }
-
-
-
-
     e.preventDefault();
 }
 
@@ -89,25 +61,12 @@ function deleteAllItems(e) {
     if (confirm('Hepsini silmek istiyor musunuz?')) {
 
         //taskList.innerHTML='';
-
         while (taskList.firstChild) {
             taskList.removeChild(taskList.firstChild);
-
         }
-
-
-
-
         localStorage.clear();
-
     }
-
-
-
-
-
     e.preventDefault();
-
 }
 
 function loadItems() {
@@ -115,7 +74,6 @@ function loadItems() {
     items = getItemsFromLS();
     items.forEach(function (item) {
         createItem(item);
-
     });
 }
 
@@ -134,8 +92,6 @@ function setItemtoLS(text) {
     items = getItemsFromLS();
     items.push(text);
     localStorage.setItem('items', JSON.stringify(items));
-
-
 }
 
 function deleteItemFromLS(text) {
@@ -146,10 +102,7 @@ function deleteItemFromLS(text) {
         if (item === text) {
 
             items.splice(index, 1);
-
         }
-
-
     });
 
     localStorage.setItem('items', JSON.stringify(items));
